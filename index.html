@@ -1,0 +1,677 @@
+<title>Ebooks Engenharia Aviátoria</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap">
+
+<style>
+/* Layout: single-column editorial with accent sidebar stripes */
+:root {
+  --bg: #0C1220;
+  --bg-card: #131B2E;
+  --bg-elevated: #1A2440;
+  --fg: #E8ECF4;
+  --fg-muted: #8A96B0;
+  --accent: #00D4AA;
+  --accent-glow: rgba(0, 212, 170, 0.15);
+  --warning: #FFB347;
+  --font-display: 'Space Grotesk', system-ui, sans-serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: light) {
+  :root:not([data-theme="dark"]) {
+    --bg: #F5F7FB;
+    --bg-card: #FFFFFF;
+    --bg-elevated: #EDF0F7;
+    --fg: #1A1F2E;
+    --fg-muted: #5A6478;
+    --accent: #00A882;
+    --accent-glow: rgba(0, 168, 130, 0.1);
+    --warning: #E89520;
+    color-scheme: light;
+  }
+}
+
+:root[data-theme="light"] {
+  --bg: #F5F7FB;
+  --bg-card: #FFFFFF;
+  --bg-elevated: #EDF0F7;
+  --fg: #1A1F2E;
+  --fg-muted: #5A6478;
+  --accent: #00A882;
+  --accent-glow: rgba(0, 168, 130, 0.1);
+  --warning: #E89520;
+  color-scheme: light;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  line-height: 1.7;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0;
+}
+
+.wrapper {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Hero */
+.hero {
+  padding: 4rem 0 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--accent-glow);
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 6px 16px;
+  border-radius: 100px;
+  margin-bottom: 1.5rem;
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+  text-wrap: balance;
+  margin-bottom: 1rem;
+}
+
+.hero h1 span {
+  color: var(--accent);
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: var(--fg-muted);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  text-wrap: balance;
+}
+
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  font-variant-numeric: tabular-nums;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: var(--fg-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* Section */
+section {
+  padding: 3rem 0;
+}
+
+.section-label {
+  font-family: var(--font-display);
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+section h2 {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  text-wrap: balance;
+  margin-bottom: 1rem;
+}
+
+section > p {
+  color: var(--fg-muted);
+  max-width: 650px;
+  margin-bottom: 2rem;
+}
+
+/* Cards grid */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-elevated);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.card:hover {
+  border-color: var(--accent);
+}
+
+.card-icon {
+  width: 40px;
+  height: 40px;
+  background: var(--accent-glow);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card p {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+  line-height: 1.6;
+}
+
+/* Steps */
+.steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  counter-reset: step;
+}
+
+.step {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+  counter-increment: step;
+}
+
+.step-num {
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+.step-content h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.25rem;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: var(--fg-muted);
+}
+
+/* Niches */
+.niches {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+}
+
+.niche {
+  background: var(--bg-card);
+  border: 1px solid var(--bg-elevated);
+  border-radius: 10px;
+  padding: 1rem 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.niche-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--accent);
+  flex-shrink: 0;
+}
+
+.niche span {
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+/* Revenue table */
+.revenue-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+  margin-top: 1rem;
+}
+
+.revenue-table th {
+  font-family: var(--font-display);
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--fg-muted);
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--bg-elevated);
+}
+
+.revenue-table td {
+  padding: 0.75rem 1rem;
+  font-size: 0.9rem;
+  border-bottom: 1px solid var(--bg-elevated);
+}
+
+.revenue-table tr:last-child td {
+  border-bottom: none;
+  font-weight: 600;
+  color: var(--accent);
+}
+
+.table-wrap {
+  overflow-x: auto;
+  background: var(--bg-card);
+  border: 1px solid var(--bg-elevated);
+  border-radius: 12px;
+}
+
+/* CTA */
+.cta-section {
+  text-align: center;
+  padding: 3rem 0 4rem;
+}
+
+.cta-section h2 {
+  margin-bottom: 0.75rem;
+}
+
+.cta-section p {
+  color: var(--fg-muted);
+  max-width: 500px;
+  margin: 0 auto 2rem;
+}
+
+.cta-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--accent);
+  color: var(--bg);
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1rem;
+  padding: 14px 32px;
+  border-radius: 10px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.cta-btn:hover { opacity: 0.85; }
+
+/* Callout */
+.callout {
+  background: var(--accent-glow);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+}
+
+.callout p {
+  color: var(--fg);
+  font-size: 0.95rem;
+}
+
+.callout strong {
+  color: var(--accent);
+}
+
+/* Footer */
+footer {
+  border-top: 1px solid var(--bg-elevated);
+  padding: 2rem 0;
+  text-align: center;
+  color: var(--fg-muted);
+  font-size: 0.8rem;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .hero { padding: 2.5rem 0 2rem; }
+  .hero-stats { gap: 1.5rem; }
+  section { padding: 2rem 0; }
+  .step { gap: 1rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+</style>
+
+<div class="wrapper">
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="hero-badge">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M17.8 19.2L16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.4-.1.9.3 1.1L11 12l-2 3H6l-1 1 3 2 2 3 1-1v-3l3-2 3.3 7.3c.3.4.7.5 1.1.3l.5-.3c.4-.2.6-.7.5-1.1z"/></svg>
+      Guia Completo 2026
+    </div>
+    <h1>Ganhe Dinheiro Vendendo<br><span>Ebooks de Engenharia Aviátoria</span></h1>
+    <p>Transforme conhecimento técnico em renda passiva. O mercado aeronáutico movimenta bilhões e profissionais buscam material de estudo atualizado todos os dias.</p>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-num">R$ 4,2 bi</div>
+        <div class="stat-label">Mercado educacional técnico</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">78%</div>
+        <div class="stat-label">Preferem digital</div>
+      </div>
+      <div class="stat">
+        <div class="stat-num">12x</div>
+        <div class="stat-label">ROI médio em ebooks</div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Por que ebooks de aviação -->
+  <section>
+    <div class="section-label">O Mercado</div>
+    <h2>Por que ebooks de engenharia aviátoria?</h2>
+    <p>Poucos nichos combinam alta demanda com escassez de material em português. Profissionais e estudantes pagam bem por conteúdo especializado.</p>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+        </div>
+        <h3>Baixa concorrência</h3>
+        <p>Material técnico em português sobre aviação é escasso. Você entra num mercado pouco explorado com alta demanda reprimida.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg>
+        </div>
+        <h3>Ticket alto</h3>
+        <p>Ebooks técnicos vendem entre R$ 47 e R$ 197. Profissionais de aviação investem em qualificação sem hesitar.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/><line x1="4" y1="22" x2="4" y2="15"/></svg>
+        </div>
+        <h3>Renda passiva real</h3>
+        <p>Escreva uma vez, venda para sempre. Atualize anualmente e mantenha relevância com custo mínimo de manutenção.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Nichos -->
+  <section>
+    <div class="section-label">Nichos lucrativos</div>
+    <h2>Temas que mais vendem</h2>
+    <p>Escolha um nicho onde você tem domínio ou estude profundamente antes de escrever. Autoridade no assunto é o que vende.</p>
+    <div class="niches">
+      <div class="niche"><div class="niche-dot"></div><span>Aerodinâmica aplicada</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Manutenção de aeronaves</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Sistemas de propulsão</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Aviônica e instrumentação</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Regulamentação ANAC</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Preparatório ANAC/EASA</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Projeto estrutural</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Materiais compostos</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Segurança de voo</span></div>
+      <div class="niche"><div class="niche-dot"></div><span>Drones e UAVs</span></div>
+    </div>
+    <div class="callout">
+      <p><strong>Dica de ouro:</strong> Ebooks preparatórios para provas da ANAC e guias de manutenção prática têm as maiores taxas de conversão. Profissionais comprando sob pressão de prazos são os clientes mais decisivos.</p>
+    </div>
+  </section>
+
+  <!-- Passo a passo -->
+  <section>
+    <div class="section-label">Passo a passo</div>
+    <h2>Como começar do zero</h2>
+    <p>Mesmo sem experiência prévia com vendas digitais, você pode lançar seu primeiro ebook em 30 dias seguindo este processo.</p>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <div class="step-content">
+          <h3>Escolha o nicho e valide a demanda</h3>
+          <p>Pesquise no Google Trends, fóruns de aviação e grupos de Facebook. Verifique o que profissionais perguntam e onde falta material em português. Use o Ubersuggest para confirmar volume de busca.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <div class="step-content">
+          <h3>Estruture o conteúdo com profundidade</h3>
+          <p>Monte um sumário com 8 a 15 capítulos. Inclua diagramas técnicos, exemplos práticos, tabelas de referência e exercícios resolvidos. Profissionais querem aplicação, não teoria rasa.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <div class="step-content">
+          <h3>Escreva e formate profissionalmente</h3>
+          <p>Use o Canva ou Adobe InDesign para diagramação. O ebook precisa parecer um material de editora: capa profissional, fontes legíveis, figuras em alta resolução e ISBN (opcional, mas agrega credibilidade).</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <div class="step-content">
+          <h3>Escolha a plataforma de venda</h3>
+          <p>Hotmart, Eduzz ou Monetizze são as mais usadas no Brasil. Elas cuidam do pagamento, entrega automática e programa de afiliados. Comissão típica: 10% a 20% da plataforma.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">5</div>
+        <div class="step-content">
+          <h3>Crie uma página de vendas que converte</h3>
+          <p>Destaque o problema que o ebook resolve, mostre depoimentos (mesmo de leitores beta), liste os capítulos e ofereça garantia de 7 dias. Use urgência real: turmas de concursos, datas de provas ANAC.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">6</div>
+        <div class="step-content">
+          <h3>Lance e escale com tráfego</h3>
+          <p>Comece com tráfego orgânico: YouTube com vídeos técnicos, blog otimizado para SEO, Instagram com carrosséis de curiosidades sobre aviação. Depois, escale com anúncios no Google Ads segmentados por termos técnicos.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projeção de receita -->
+  <section>
+    <div class="section-label">Projeção financeira</div>
+    <h2>Quanto você pode faturar</h2>
+    <p>Simulação conservadora com um ebook a R$ 97 e estratégias progressivas de tráfego.</p>
+    <div class="table-wrap">
+      <table class="revenue-table">
+        <thead>
+          <tr>
+            <th>Mês</th>
+            <th>Vendas/mês</th>
+            <th>Receita bruta</th>
+            <th>Líquido (est.)</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Meses 1-2</td><td>15</td><td>R$ 1.455</td><td>R$ 1.164</td></tr>
+          <tr><td>Meses 3-4</td><td>40</td><td>R$ 3.880</td><td>R$ 3.104</td></tr>
+          <tr><td>Meses 5-6</td><td>80</td><td>R$ 7.760</td><td>R$ 6.208</td></tr>
+          <tr><td>Mês 12</td><td>150+</td><td>R$ 14.550+</td><td>R$ 11.640+</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="callout">
+      <p><strong>Escale com múltiplos títulos:</strong> Autores que lançam 3 a 5 ebooks complementares multiplicam o faturamento via upsell e cross-sell. Um estudante que compra "Aerodinâmica" provavelmente quer "Propulsão" também.</p>
+    </div>
+  </section>
+
+  <!-- Ferramentas -->
+  <section>
+    <div class="section-label">Ferramentas</div>
+    <h2>O que você vai precisar</h2>
+    <div class="cards">
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        </div>
+        <h3>Escrita e edição</h3>
+        <p>Google Docs (grátis) ou Scrivener (R$ 150). Para revisão técnica, peça a colegas engenheiros. Precisão é inegociável em conteúdo técnico.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+        </div>
+        <h3>Design e diagramação</h3>
+        <p>Canva Pro (R$ 35/mês) para capas e diagramas. Para layouts complexos, Adobe InDesign. Capas profissionais também podem ser feitas no Fiverr por R$ 50-150.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        </div>
+        <h3>Plataforma de vendas</h3>
+        <p>Hotmart (sem custo fixo, cobra por venda). Alternativas: Eduzz, Monetizze, ou loja própria com WooCommerce + plugin de entrega digital.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="2" stroke-linecap="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+        </div>
+        <h3>Marketing e tráfego</h3>
+        <p>Google Ads (a partir de R$ 20/dia), YouTube para autoridade orgânica, e Instagram/LinkedIn para engajamento com profissionais do setor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Estratégias avançadas -->
+  <section>
+    <div class="section-label">Estratégias avançadas</div>
+    <h2>Como maximizar lucros</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+        </div>
+        <div class="step-content">
+          <h3>Programa de afiliados</h3>
+          <p>Ofereça 30-40% de comissão. Outros criadores de conteúdo de aviação promovem seu ebook em troca de comissão. Zero custo de aquisição — você paga só quando vende.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+        </div>
+        <div class="step-content">
+          <h3>Bundle de ebooks</h3>
+          <p>Combine 3 ebooks relacionados com 20% de desconto. "Kit Completo de Engenharia Aeronáutica" vende mais que títulos avulsos e aumenta o ticket médio para R$ 250+.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <div class="step-content">
+          <h3>Escale para cursos online</h3>
+          <p>Use o ebook como porta de entrada e ofereça um curso mais completo (R$ 497-997). Quem comprou o ebook já demonstrou interesse e confiança no seu conteúdo.</p>
+        </div>
+      </div>
+      <div class="step">
+        <div class="step-num">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/></svg>
+        </div>
+        <div class="step-content">
+          <h3>Assinatura mensal</h3>
+          <p>Crie uma área de membros com atualizações mensais, simulados de prova ANAC, e comunidade exclusiva. Receita recorrente de R$ 29-49/mês por assinante.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <h2>Pronto para começar?</h2>
+    <p>O mercado de engenharia aviátoria está esperando por conteúdo de qualidade em português. Seja o primeiro a ocupar esse espaço.</p>
+    <button class="cta-btn" onclick="document.getElementById('checklist').hidden = !document.getElementById('checklist').hidden">
+      Ver checklist de lançamento
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </button>
+
+    <div id="checklist" hidden style="text-align:left; max-width:500px; margin:2rem auto 0; background:var(--bg-card); border:1px solid var(--bg-elevated); border-radius:12px; padding:1.5rem;">
+      <h3 style="font-family:var(--font-display); font-size:1rem; margin-bottom:1rem;">Checklist de lançamento — 30 dias</h3>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c1"> Escolher nicho e validar demanda
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c2"> Criar sumário detalhado (8-15 capítulos)
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c3"> Escrever conteúdo (meta: 2 capítulos/semana)
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c4"> Revisão técnica por profissional da área
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c5"> Design da capa e diagramação
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c6"> Cadastrar na Hotmart / Eduzz
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c7"> Criar página de vendas
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c8"> Configurar programa de afiliados
+      </label>
+      <label style="display:flex; gap:10px; padding:8px 0; font-size:0.9rem; cursor:pointer; color:var(--fg-muted);">
+        <input type="checkbox" id="c9"> Lançar e divulgar nos primeiros canais
+      </label>
+    </div>
+  </section>
+
+  <footer>
+    <p>Guia informativo sobre venda de ebooks de engenharia aviátoria — 2026</p>
+  </footer>
+
+</div>
